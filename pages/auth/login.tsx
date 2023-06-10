@@ -1,5 +1,6 @@
 import LoginForm from "../../app/components/organisms/forms/LoginForm";
 import StandardHeader from "../../app/components/molecules/typography/StandardHeader";
+import MySimpleLinksNavigation from "../../app/components/molecules/links/MySimpleLinksNavigation";
 
 function Page() {
     return (
@@ -19,6 +20,22 @@ function Page() {
                     Variant="purple"
                 />
                 <LoginForm />
+                <MySimpleLinksNavigation 
+                    ClassName="mt-8"
+                    Heading="Nie znalazłeś tego czego szukasz?"
+                    Links={[
+                        {
+                            To: "/auth/register",
+                            Text: "Zarejestruj się",
+                            Variant: "grey"
+                        },
+                        {
+                            To: "/auth/password-recovery",
+                            Text: "Zapomniałem hasła",
+                            Variant: "grey"
+                        }
+                    ]}
+                />
             </div>
         </div>
     );

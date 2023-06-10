@@ -7,8 +7,8 @@ export default interface ILoginForm {
 };
 
 export const ILoginFormZodObject = z.object({
-    Email: z.string().email(),
-    Password: z.string().min(4)
+    Email: z.string().email("Adres email jest nieprawidłowy"),
+    Password: z.string().min(1, "Hasło jest obowiązkowe")
 });
 
 export const ILoginFormResolver = zodResolver(ILoginFormZodObject);

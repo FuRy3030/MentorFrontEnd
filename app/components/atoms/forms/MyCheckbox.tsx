@@ -1,4 +1,4 @@
-import { EuiCheckbox } from "@elastic/eui";
+import { EuiCheckbox, EuiFormRow } from "@elastic/eui";
 import clsx from "clsx";
 import { useFormContext } from "react-hook-form";
 
@@ -7,19 +7,27 @@ interface MyCheckboxFieldProps {
     Label: string;
     Name: string;
     ClassName?: string;
+    FullWidth?: boolean;
 };
 
 function MyCheckbox(Props: MyCheckboxFieldProps) {
-    const { watch, setValue } = useFormContext();
+    const { watch, setValue, formState: { errors }, trigger } = useFormContext();
 
     return (
-        <EuiCheckbox
-            checked={watch(Props.Name)} 
-            onChange={(e) => setValue(Props.Name, e.target.checked)}
-            id={Props.Id}
-            label={Props.Label}
-            className={clsx('my-4', Props.ClassName)}
-        />
+        <EuiFormRow fullWidth={Props.FullWidth} isInvalid={!!errors[Props.Name]} 
+            error={errors[Props.Name]?.message?.toString()}
+        >
+            <EuiCheckbox
+                checked={watch(Props.Name)} 
+                onChange={(e) => {
+                    setValue(Props.Name, e.target.checked);
+                    trigger(Props.Name);
+                }}
+                id={Props.Id}
+                label={Props.Label}
+                className={clsx('my-4', Props.ClassName)}
+            />
+        </EuiFormRow>
     );
 };
 

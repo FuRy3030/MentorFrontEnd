@@ -2,6 +2,7 @@ import { EuiAvatar } from "@elastic/eui";
 import Timeline from "../../app/components/molecules/list-items/Timeline";
 import StandardHeader from "../../app/components/molecules/typography/StandardHeader";
 import RegisterForm from "../../app/components/organisms/forms/RegisterForm";
+import MySimpleLinksNavigation from "../../app/components/molecules/links/MySimpleLinksNavigation";
 
 function Page() {
     return (
@@ -86,6 +87,22 @@ function Page() {
                     Variant="purple"
                 />
                 <RegisterForm />
+                <MySimpleLinksNavigation 
+                    ClassName="mt-8"
+                    Heading="Nie znalazłeś tego czego szukasz?"
+                    Links={[
+                        {
+                            To: "/auth/login",
+                            Text: "Zaloguj się",
+                            Variant: "grey"
+                        },
+                        {
+                            To: "/auth/password-recovery",
+                            Text: "Zapomniałem hasła",
+                            Variant: "grey"
+                        }
+                    ]}
+                />
             </div>
         </div>
     );

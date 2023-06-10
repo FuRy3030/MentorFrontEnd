@@ -5,13 +5,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Montserrat:wght@900&family=Nunito+Sans:wght@600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&family=Open+Sans:wght@500;600;700;800&family=Quicksand:wght@300;400;500;600;700&family=Raleway:wght@900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:wght@600;700;800;900&family=Source+Sans+Pro:wght@600;700;900&family=Space+Mono:wght@700&display=swap');
 
 body {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     overflow-x: hidden;
+    font-weight: 500;
 }
 
+// Override for inputs
 .StandardFont {
-    font-family: 'Nunito', sans-serif !important;
+    font-family: 'Quicksand', sans-serif !important;
+    font-weight: 500 !important;
 }
+
+.MarginTopNoneImportant {
+    margin-top: 0 !important;
+}
+
+// Custom overrides 
 
 .euiFieldText {
     box-shadow: 0 0 transparent, 
@@ -29,6 +38,30 @@ body {
         0 1px 1.5px 0 rgba(0, 0, 0, .05) !important;
 }
 
+.euiSuperSelectControl {
+    box-shadow: 0 0 transparent, 
+        inset 0 0 0 1px rgba(17, 42, 134, 0.1), 
+        0 0 0 1px #e0e0e0, 
+        0 2px 4px 0 rgba(0, 0, 0, .07), 
+        0 1px 1.5px 0 rgba(0, 0, 0, .05) !important;
+}
+
+.euiFormControlLayoutDelimited {
+    box-shadow: 0 0 transparent, 
+        inset 0 0 0 1px rgba(17, 42, 134, 0.1), 
+        0 0 0 1px #e0e0e0, 
+        0 2px 4px 0 rgba(0, 0, 0, .07), 
+        0 1px 1.5px 0 rgba(0, 0, 0, .05) !important;
+}
+
+.euiSuperSelectControl:focus {
+    background-image: linear-gradient(to top, #635bff, #635bff 2px, transparent 2px, transparent 100%) !important;
+}
+
+.euiSuperSelectControl.euiSuperSelect--isOpen__button {
+    background-image: linear-gradient(to top, #635bff, #635bff 2px, transparent 2px, transparent 100%) !important;
+}
+
 .euiFieldPassword:focus {
     background-image: linear-gradient(to top, #635bff, #635bff 2px, transparent 2px, transparent 100%) !important;
 }
@@ -43,4 +76,78 @@ body {
 
 .euiCheckbox__label {
     font-weight: 600;
+}
+
+.euiTab__content {
+    color: #0a2540 !important;
+}
+
+.euiTab-isSelected {
+    box-shadow: inset 0 -2px 0 #635bff !important;
+}
+
+.euiTab-isSelected span {
+    color: #635bff !important;
+}
+
+.ToastShow {
+    transform: translateY(0);
+    transition: transform 0.5s ease-in-out;
+}
+  
+.ToastHide {
+    transform: translateY(calc(100% + 40px));
+    transition: transform 0.5s ease-in-out;
+}
+
+.ToastDanger {
+    color: rgb(95, 33, 32);
+}
+
+.ToastDanger [data-test-subj="euiToastHeader"] span {
+    color: rgb(95, 33, 32);
+    font-size: 17px;
+}
+
+.ToastDanger [data-test-subj="euiToastHeader"] svg {
+    fill: rgb(211, 47, 47);
+}
+
+.ToastSuccess {
+    color: rgb(30, 70, 32);
+}
+
+.ToastSuccess [data-test-subj="euiToastHeader"] span {
+    color: rgb(30, 70, 32);
+    font-size: 17px;
+}
+
+.ToastSuccess [data-test-subj="euiToastHeader"] svg {
+    fill: rgb(46, 125, 50);
+}
+
+.ToastWarning {
+    color: rgb(102, 60, 0);
+}
+
+.ToastWarning [data-test-subj="euiToastHeader"] span {
+    color: rgb(102, 60, 0);
+    font-size: 17px;
+}
+
+.ToastWarning [data-test-subj="euiToastHeader"] svg {
+    fill: rgb(237, 108, 2);
+}
+
+.ToastInfo {
+    color: rgb(1, 67, 97);
+}
+
+.ToastInfo [data-test-subj="euiToastHeader"] span {
+    color: rgb(1, 67, 97);
+    font-size: 17px;
+}
+
+.ToastInfo [data-test-subj="euiToastHeader"] svg {
+    fill: rgb(2, 136, 209);
 }
