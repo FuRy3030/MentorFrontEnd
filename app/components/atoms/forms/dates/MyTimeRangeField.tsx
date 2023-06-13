@@ -18,7 +18,7 @@ interface MyTimeRangeFieldProps {
 function MyTimeRangeField(Props: MyTimeRangeFieldProps) {
     const { watch, setValue, formState: { errors }, trigger } = useFormContext();
     const EuiDatePicker: any = dynamic(() => import('@elastic/eui').then(module => module.EuiDatePicker), 
-        {ssr: true});
+        { ssr: true });
     let ErrorMessage: string | undefined = '';    
 
     if (!!errors[Props.Name[0]] && !!errors[Props.Name[1]]) {
@@ -45,8 +45,8 @@ function MyTimeRangeField(Props: MyTimeRangeFieldProps) {
                         onChange={(Date: Moment) => {
                             if (Date.tz() === 'Europe/Warsaw') setValue(Props.Name[0], Date);
                             else setValue(Props.Name[0], moment.tz(Date, 'Europe/Warsaw'));
-                            trigger(Props.Name[0]);
                             Props.OnChange && Props.OnChange[0]();
+                            trigger(Props.Name[0]);
                         }}
                         dateFormat="HH:mm"
                         timeFormat="HH:mm"
@@ -64,8 +64,8 @@ function MyTimeRangeField(Props: MyTimeRangeFieldProps) {
                         onChange={(Date: Moment) => {
                             if (Date.tz() === 'Europe/Warsaw') setValue(Props.Name[1], Date);
                             else setValue(Props.Name[1], moment.tz(Date, 'Europe/Warsaw'));
-                            trigger(Props.Name[1]);
                             Props.OnChange && Props.OnChange[1]();
+                            trigger(Props.Name[1]);
                         }}
                         dateFormat="HH:mm"
                         timeFormat="HH:mm"

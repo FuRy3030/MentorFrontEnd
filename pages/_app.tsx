@@ -10,7 +10,7 @@ import 'moment-timezone';
 
 function MyApp({ Component, pageProps, router }: AppProps) {
     // moment.tz.setDefault('Europe/Warsaw');
-    const RoutesWithoutLayout = ['/', '/schedule'];
+    const RoutesWithoutLayout = ['/', '/schedule', '/profile'];
 
     // Check if the current route should have the layout
     const ShouldRenderLayout: boolean = RoutesWithoutLayout.includes(router.route);

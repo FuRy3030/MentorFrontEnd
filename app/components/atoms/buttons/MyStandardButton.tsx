@@ -10,7 +10,7 @@ interface StandardButtonProps {
 
 function StandardButton(Props: StandardButtonProps) {
     return (
-        <button type={Props.Type} className={clsx('group flex items-center font-bold cursor-pointer text-base rounded-3xl px-5 py-1.5 text-white transition-[background-color] duration-300 ease-in-out hover:bg-white hover:shadow-lg', 
+        <button type={Props.Type} className={clsx('group flex items-center font-bold cursor-pointer text-base rounded-3xl py-1.5 text-white transition-[background-color] duration-300 ease-in-out hover:bg-white hover:shadow-lg', 
             Props.ClassName)} onClick={Props.onClick}
         >
             <span className="transition-all duration-300 ease-in-out group-hover:mr-2.5">

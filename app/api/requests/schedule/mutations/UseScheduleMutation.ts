@@ -9,7 +9,7 @@ const INSERT_NEW_SCHEDULE_MUTATION = gql`
     mutation insertTutorSchedule($input: TutorScheduleAPIInput!) {
         insertTutorSchedule(entity: $input) {
             id
-            userId
+            tutorId
             timezone
             scheduleStartTime
             scheduleEndTime
@@ -19,6 +19,7 @@ const INSERT_NEW_SCHEDULE_MUTATION = gql`
                 item2
             }
             exceptionDates
+            additionDates
         }
     }
 `;
@@ -27,7 +28,7 @@ const UPDATE_SCHEDULE_MUTATION = gql`
     mutation updateTutorSchedule($input: TutorScheduleInput!) {
         updateTutorSchedule(entity: $input) {
             id
-            userId
+            tutorId
             timezone
             scheduleStartTime
             scheduleEndTime
@@ -37,11 +38,12 @@ const UPDATE_SCHEDULE_MUTATION = gql`
                 item2
             }
             exceptionDates
+            additionDates
         }
     }
 `;
 
-const UseMutateSchedule = (() => {
+const UseScheduleMutation = ((OnSuccess?: Function) => {
     return useMutation<IScheduleForm, ClientError, IScheduleForm>(
         ['UpdateUserSchedule'],
         async (UpdatedSchedule: IScheduleForm) => {
@@ -61,8 +63,13 @@ const UseMutateSchedule = (() => {
                     INSERT_NEW_SCHEDULE_MUTATION, { input: ToCamelCase(UpdatedSchedule, ['Id']) });
                 return Response.insertTutorSchedule as IScheduleForm;
             }
+        },
+        {
+            onSuccess: () => {
+                OnSuccess && OnSuccess();
+            }
         }
     )
 });
 
-export default UseMutateSchedule;
+export default UseScheduleMutation;

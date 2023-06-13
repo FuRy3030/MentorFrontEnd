@@ -3,10 +3,31 @@ export default function ToCamelCase<T>(CurrentObject: T, ExcludedKeys: (keyof T)
     
     for (const Key in CurrentObject) {
         if (Object.prototype.hasOwnProperty.call(CurrentObject, Key) && !ExcludedKeys.includes(Key)) {
+            const Value = CurrentObject[Key];
             const CamelCaseKey = Key.charAt(0).toLowerCase() + Key.slice(1);
-            Result[CamelCaseKey as keyof T] = CurrentObject[Key];
+
+            if (Array.isArray(Value)) {
+                Result[CamelCaseKey as keyof T] = ToCamelCaseArrayHelper(Value, ExcludedKeys);
+            } else if (typeof Value === 'object' && Value !== null) {
+                // Recursively process nested objects
+                Result[CamelCaseKey as keyof T] = ToCamelCase(Value as T, ExcludedKeys) as T[Extract<keyof T, string>];
+            } else {
+                Result[CamelCaseKey as keyof T] = Value;
+            } 
         }
     }
     
     return Result;
+};
+
+const ToCamelCaseArrayHelper = <T>(CurrentArray: any, ExcludedKeys: (keyof T)[] = []) => {
+    for (let i = 0; i < CurrentArray.length; i++) {
+        if (Array.isArray(CurrentArray[i])) {
+            ToCamelCaseArrayHelper(CurrentArray[i], ExcludedKeys);
+        } else if (typeof CurrentArray[i] === 'object' && CurrentArray[i] !== null) {
+            CurrentArray[i] = ToCamelCase(CurrentArray[i] as T, ExcludedKeys) as T[Extract<keyof T, string>];
+        }
+    }
+
+    return CurrentArray;
 }

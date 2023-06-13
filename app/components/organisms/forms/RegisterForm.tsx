@@ -41,7 +41,7 @@ function RegisterForm() {
                     />
                     <MyStandardButton Type="submit" Text="Zarejestruj się" onClick={() => {}} 
                         Icon="icon-[jam--log-in]" 
-                        ClassName="ml-auto mt-2 bg-dark hover:text-dark" 
+                        ClassName="ml-auto mt-2 px-5 bg-dark hover:text-dark" 
                     />
                 </MyFormProvider>
                 <MyToast 

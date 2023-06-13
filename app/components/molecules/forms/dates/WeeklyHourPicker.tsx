@@ -26,7 +26,7 @@ function WeeklyHourPicker() {
     
     if (Hours.length > 0) {
         return (
-            <div className="flex flex-row justify-between my-7">
+            <div className="flex flex-row justify-evenly my-7">
                 {AvaliableHours.map((AvaliableHoursDay: { item1: string; item2: string[] }) => (
                     <MyDaySchedulePicker 
                         Day={AvaliableHoursDay.item1} 
@@ -39,7 +39,7 @@ function WeeklyHourPicker() {
             </div>
         );
     } else {
-        return <EmptyNotification />;
+        return <EmptyNotification Message="Dodaj swój harmonogram" />;
     }
 };
 

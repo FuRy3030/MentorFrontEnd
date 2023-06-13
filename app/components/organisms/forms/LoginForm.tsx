@@ -21,7 +21,7 @@ function LoginForm() {
                 <MyPasswordField Name="Password" Label="Hasło" Placeholder="Wpisz swoje hasło" FullWidth />
                 <MyStandardButton Type="submit" Text="Zaloguj się" onClick={() => {}} 
                     Icon="icon-[jam--log-in]" 
-                    ClassName="ml-auto mt-6 bg-dark hover:text-dark" 
+                    ClassName="ml-auto mt-6 px-5 bg-dark hover:text-dark" 
                 />
             </MyFormProvider>
             <MyToast 

@@ -18,6 +18,7 @@ const GET_USER_SCHEDULE_QUERY = gql`
                 item2
             }
             exceptionDates
+            additionDates
         }
     }
 `;

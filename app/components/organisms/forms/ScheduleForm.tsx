@@ -6,33 +6,60 @@ import MySelectField from "../../atoms/forms/MySelectField";
 import MyTextField from "../../atoms/forms/MyTextField";
 import MyTimeRangeField from "../../atoms/forms/dates/MyTimeRangeField";
 import WeeklyHourPicker from "../../molecules/forms/dates/WeeklyHourPicker";
-import UseDaysOfTheWeek from "../../../hooks/universal/UseDaysOfTheWeek";
+import UseDaysOfTheWeek from "../../../hooks/constants/UseDaysOfTheWeek";
 import { useFormContext } from "react-hook-form";
 import GetHoursBetweenTwoDates from "../../../helpers/dates/GetHoursBetweenTwoDates";
-import UseMutateSchedule from "../../../api/requests/schedule/mutations/UseMutateSchedule";
 import UseUserClaims from "../../../hooks/auth/UseUserClaims";
 import SuccessErrorToastsPair from "../../modals/toasts/SuccessErrorToastsPair";
 import UseScheduleQuery from "../../../api/requests/schedule/queries/UseScheduleQuery";
+import SetTime from "../../../helpers/dates/SetTime";
+import { useQueryClient } from "@tanstack/react-query";
+import UseScheduleMutation from "../../../api/requests/schedule/mutations/UseScheduleMutation";
 
 function ScheduleForm() {
+    const QueryClient = useQueryClient();
     const ScheduleQuery = UseScheduleQuery();
-    const { mutate, isSuccess, isError } = UseMutateSchedule();
+    const { mutate, isSuccess, isError } = UseScheduleMutation(() => {
+        QueryClient.invalidateQueries(["UserSchedule"]);
+    });
     const CurrentDate = moment().tz('Europe/Warsaw');
-    const Values: IScheduleForm = {
-        Id: undefined,
-        UserId: UseUserClaims()?.Id,
-        Timezone: "Warszawa / Polska",
-        ScheduleStartTime: CurrentDate,
-        ScheduleEndTime: CurrentDate,
-        LessonDuration: 60,
-        AvaliableHours: [],
-        ExceptionDates: [],
-        AdditionDates: []
-    };
+    let DefaultValues = {};
+
+    if (ScheduleQuery.data?.Id) {
+        const ScheduleStartTimeMoment = SetTime(CurrentDate, typeof ScheduleQuery.data?.ScheduleStartTime === 'string' ? 
+            ScheduleQuery.data?.ScheduleStartTime : '00:00');
+        const ScheduleEndTimeMoment = SetTime(CurrentDate, typeof ScheduleQuery.data?.ScheduleEndTime === 'string' ? 
+            ScheduleQuery.data?.ScheduleEndTime : '00:00');
+
+        DefaultValues = {
+            Id: ScheduleQuery.data.Id,
+            TutorId: ScheduleQuery.data.TutorId,
+            Timezone: "Warszawa / Polska",
+            ScheduleStartTime: ScheduleStartTimeMoment,
+            ScheduleEndTime: ScheduleEndTimeMoment,
+            LessonDuration: ScheduleQuery.data.LessonDuration,
+            AvaliableHours: ScheduleQuery.data.AvaliableHours,
+            ExceptionDates: ScheduleQuery.data.ExceptionDates,
+            AdditionDates: ScheduleQuery.data.AdditionDates
+        };
+    } else {
+        DefaultValues = {
+            Id: undefined,
+            TutorId: UseUserClaims()?.Id,
+            Timezone: "Warszawa / Polska",
+            ScheduleStartTime: CurrentDate,
+            ScheduleEndTime: CurrentDate,
+            LessonDuration: 60,
+            AvaliableHours: [],
+            ExceptionDates: [],
+            AdditionDates: []
+        };
+    }
 
     return (
-        <MyFormProvider<IScheduleForm> FormResolver={IScheduleFormResolver} DefaultValues={Values}
-            OnSubmit={(FormData: IScheduleForm) => mutate(FormData)} ClassName="mx-auto max-w-[700px] my-6"
+        <MyFormProvider<IScheduleForm> FormResolver={IScheduleFormResolver} DefaultValues={DefaultValues} 
+            IsFetched={ScheduleQuery.isFetched} OnSubmit={(FormData: IScheduleForm) => mutate(FormData)} 
+            ClassName="mx-auto max-w-[750px] my-6" IsLoading={ScheduleQuery.isLoading}
         >
             <InnerForm />
             <SuccessErrorToastsPair 
@@ -56,7 +83,7 @@ function ScheduleForm() {
 };
 
 const InnerForm = () => {
-    const { watch, setValue, clearErrors, setError } = useFormContext();
+    const { watch, setValue, clearErrors, setError, formState: { errors } } = useFormContext();
     const DaysOfTheWeek = UseDaysOfTheWeek();
 
     const OnChangeAvaliableHours = () => {
@@ -110,7 +137,10 @@ const InnerForm = () => {
                 Name={["ScheduleStartTime", "ScheduleEndTime"]}
                 OnChange={[OnChangeAvaliableHours, OnChangeAvaliableHours]}
                 FullWidth
-            />    
+            />  
+            {errors['AvaliableHours']?.message && <p className="text-sm text-semibold text-red-600 mt-1.5 cursor-default">
+                {errors['AvaliableHours']?.message.toString()}
+            </p>}  
             <WeeklyHourPicker />       
             <MyStandardButton Type="submit" Text="Zapisz harmonogram" onClick={() => {}} 
                 Icon="icon-[mingcute--schedule-fill]" 
