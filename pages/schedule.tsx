@@ -17,7 +17,7 @@ function Page() {
                     ]}
                     ClassName="w-[100%] md:w-[47.5%]"
                 />
-                <img className="w-[100%] md:w-[47.5%] h-auto self-start" src="/illustrated/introduction/Calendar.png" alt="Calendar" />
+                <img className="w-[100%] md:w-[47.5%] h-auto self-start" src="/illustrated/Calendar.png" alt="Calendar" />
             </div>
             <div className="px-6 w-full h-auto sm:px-8 py-6 rounded-xl bg-white">
             {/* border border-gray-200 border-solid shadow-steep-jjt */}

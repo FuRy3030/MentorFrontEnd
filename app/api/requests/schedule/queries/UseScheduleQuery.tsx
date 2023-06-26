@@ -6,7 +6,7 @@ import ToUpperCase from "../../../../helpers/universal/ToUpperCase";
 
 const GET_USER_SCHEDULE_QUERY = gql`
     query {
-        tutorScheduleByUser {
+        GetTutorScheduleForUser {
             id
             userId
             timezone
@@ -27,9 +27,9 @@ const UseScheduleQuery = (() => {
     return useQuery<IScheduleForm, ClientError, IScheduleForm>(
         ['UserSchedule'],
         async () => {
-            const Response = await GraphQLClient.request<{ tutorScheduleByUser: IScheduleForm }>
+            const Response = await GraphQLClient.request<{ GetTutorScheduleForUser: IScheduleForm }>
                 (GET_USER_SCHEDULE_QUERY);
-            return ToUpperCase(Response.tutorScheduleByUser) as IScheduleForm;
+            return ToUpperCase(Response.GetTutorScheduleForUser) as IScheduleForm;
         }
     );
 });

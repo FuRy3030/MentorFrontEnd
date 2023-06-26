@@ -20,7 +20,7 @@ function ProfileForm() {
     const QueryClient = useQueryClient();
     const ProfileQuery = UseProfileQuery();
     const { mutate, isSuccess, isError } = UseProfileMutation(() => {
-        QueryClient.invalidateQueries(["Profile"]);
+        QueryClient.invalidateQueries(["UserProfile"]);
     });
     let DefaultValues = {};
 
@@ -65,6 +65,7 @@ function ProfileForm() {
             OnSubmit={(FormData: IProfileForm) => mutate(FormData)} ClassName="mx-auto max-w-[700px]"
             IsFetched={ProfileQuery.isFetched} IsLoading={ProfileQuery.isLoading}
         >
+            <h2 className="text-2xl font-bold text-dark mb-6">Pozwól swoim uczniom poznać się bliżej</h2>
             <InnerForm DefaultValues={DefaultValues as IProfileForm} />
             <SuccessErrorToastsPair 
                 SuccessTitle="Profil został zaaktualizowany"
@@ -73,7 +74,7 @@ function ProfileForm() {
                 IsErrorToastTriggered={isError}
                 SuccessContent={
                     <p className="text-base font-medium">
-                        Twoja wizytówka została pomyślnie zaaktualizowana. W ciągu kilku minut uczniowie będą w stanie zobaczyć twój nowy profil tutora
+                        Twoja wizytówka została pomyślnie zaaktualizowana. W ciągu kilku minut uczniowie będą w stanie zobaczyć twój nowy profil tutora.
                     </p>
                 }
                 ErrorContent={
@@ -181,9 +182,16 @@ const InnerForm = (Props: { DefaultValues: IProfileForm}) => {
                 FullWidth 
                 Readonly
             />
-            <div className="flex justify-evenly flex-row flex-wrap my-6">
-                <MySwitch Label="Zajęcia online" Name="IsRemote" />
-                <MySwitch Label="Zajęcia stacjonarne w moim mieście" Name="IsStationary" />
+            <div className="w-full flex-col my-6">
+                <label className="inline-block font-semibold mb-0.5" 
+                    style={{ color: '#1a1c21', fontSize: '0.8571428571rem', lineHeight: '1.1428571429rem' }}
+                >
+                    Forma zajęć
+                </label>
+                <div className="flex justify-evenly flex-row flex-wrap w-full">
+                    <MySwitch Label="Zajęcia online" Name="IsRemote" ClassName="my-3" />
+                    <MySwitch Label="Zajęcia stacjonarne w moim mieście" Name="IsStationary" ClassName="my-3" />
+                </div>
             </div>
             <MyMultiSelectField
                 Name="Olympiads" 
@@ -220,10 +228,10 @@ const InnerForm = (Props: { DefaultValues: IProfileForm}) => {
                     );
                 })}
             </div>
-            <MyTinyMCETextEditor Name="Description" Label="Mój opis" InitialValue="" />
-            <MyStandardButton Type="submit" Text="Zarejestruj się" onClick={() => {}} 
-                Icon="icon-[jam--log-in]" 
-                ClassName="ml-auto mt-2 px-5 bg-dark hover:text-dark" 
+            <MyTinyMCETextEditor Name="Description" Label="Mój opis" InitialValue={DefaultValues.Description} />
+            <MyStandardButton Type="submit" Text="Zapisz mój profil" onClick={() => {}} 
+                Icon="icon-[material-symbols--person-pin-circle-rounded]" 
+                ClassName="mt-8 bg-brand-purple-light hover:text-dark px-8 mx-auto md:px-20 md:ml-auto md:mr-0 w-auto" 
             />
         </>
     );

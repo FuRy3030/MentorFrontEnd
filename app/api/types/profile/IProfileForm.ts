@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { RequiredNumber, RequiredString } from "../ZodBase";
+import { ExtractRawTextFromHtml } from "../../../components/atoms/forms/MyTinyMCETextEditor";
 
 export default interface IProfileForm {
     Id?: string;
@@ -48,7 +49,8 @@ export const IProfileFormZodObject = z.object({
         .min(1, { message: "Musisz wybrać przynajmniej jedną olimpiadę" }),
     IsRemote: z.boolean(),
     IsStationary: z.boolean(),
-    Description: RequiredString
+    Description: RequiredString.refine((Value) => 
+        ExtractRawTextFromHtml(Value).length > 0, { message: "Pole jest wymagane" }),
 });
 
 export const IProfileFormResolver = zodResolver(IProfileFormZodObject);

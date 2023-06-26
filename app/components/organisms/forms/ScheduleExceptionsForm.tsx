@@ -172,7 +172,7 @@ const InnerForm = (Props: { ScheduleQuery: UseQueryResult<IScheduleForm, ClientE
             </div>
             <MyStandardButton Type="submit" Text="Zapisz kalendarz" onClick={() => {}} 
                 Icon="icon-[material-symbols--calendar-month-rounded]" 
-                ClassName="ml-auto mt-8 bg-brand-purple-light hover:text-dark px-20" 
+                ClassName="mt-8 bg-brand-purple-light hover:text-dark px-8 mx-auto md:px-20 md:ml-auto md:mr-0 w-auto" 
             />
         </>
     );

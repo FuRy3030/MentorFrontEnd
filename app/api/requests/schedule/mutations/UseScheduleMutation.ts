@@ -6,8 +6,8 @@ import GraphQLClient from "../../../GraphQLClient";
 import moment from "moment";
 
 const INSERT_NEW_SCHEDULE_MUTATION = gql`
-    mutation insertTutorSchedule($input: TutorScheduleAPIInput!) {
-        insertTutorSchedule(entity: $input) {
+    mutation InsertTutorSchedule($input: TutorScheduleAPIInput!) {
+        InsertTutorSchedule(entity: $input) {
             id
             tutorId
             timezone
@@ -25,8 +25,8 @@ const INSERT_NEW_SCHEDULE_MUTATION = gql`
 `;
 
 const UPDATE_SCHEDULE_MUTATION = gql`
-    mutation updateTutorSchedule($input: TutorScheduleInput!) {
-        updateTutorSchedule(entity: $input) {
+    mutation UpdateTutorSchedule($input: TutorScheduleInput!) {
+        UpdateTutorSchedule(entity: $input) {
             id
             tutorId
             timezone
@@ -55,13 +55,13 @@ const UseScheduleMutation = ((OnSuccess?: Function) => {
             }
 
             if (UpdatedSchedule.Id) {
-                const Response = await GraphQLClient.request<{ updateTutorSchedule: IScheduleForm }>(
+                const Response = await GraphQLClient.request<{ UpdateTutorSchedule: IScheduleForm }>(
                     UPDATE_SCHEDULE_MUTATION, { input: ToCamelCase(UpdatedSchedule) });
-                return Response.updateTutorSchedule as IScheduleForm;
+                return Response.UpdateTutorSchedule as IScheduleForm;
             } else {
-                const Response = await GraphQLClient.request<{ insertTutorSchedule: IScheduleForm }>(
+                const Response = await GraphQLClient.request<{ InsertTutorSchedule: IScheduleForm }>(
                     INSERT_NEW_SCHEDULE_MUTATION, { input: ToCamelCase(UpdatedSchedule, ['Id']) });
-                return Response.insertTutorSchedule as IScheduleForm;
+                return Response.InsertTutorSchedule as IScheduleForm;
             }
         },
         {

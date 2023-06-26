@@ -15,8 +15,8 @@ interface MyTextFieldProps {
     Readonly?: boolean;
     Icon?: string;
     IsLoading?: boolean;
-    Prepend?: ReactElement | ReactElement [];
-    Append?: ReactElement | ReactElement [];
+    Prepend?: ReactElement | ReactElement [] | string;
+    Append?: ReactElement | ReactElement [] | string;
 };
 
 function MyTextField(Props: MyTextFieldProps) {

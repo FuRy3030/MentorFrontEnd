@@ -6,7 +6,7 @@ import IProfileForm from "../../../types/profile/IProfileForm";
 
 const GET_USER_DETAILS_QUERY = gql`
     query {
-        tutorDetailsByUser {
+        GetTutorDetailsForUser {
             id
             tutorId
             geoLocation {
@@ -32,9 +32,9 @@ const UseProfileQuery = (() => {
     return useQuery<IProfileForm, ClientError, IProfileForm>(
         ['UserProfile'],
         async () => {
-            const Response = await GraphQLClient.request<{ tutorDetailsByUser: IProfileForm }>
+            const Response = await GraphQLClient.request<{ GetTutorDetailsForUser: IProfileForm }>
                 (GET_USER_DETAILS_QUERY);
-            return ToUpperCase(Response.tutorDetailsByUser) as IProfileForm;
+            return ToUpperCase(Response.GetTutorDetailsForUser) as IProfileForm;
         }
     );
 });

@@ -138,13 +138,13 @@ const InnerForm = () => {
                 OnChange={[OnChangeAvaliableHours, OnChangeAvaliableHours]}
                 FullWidth
             />  
-            {errors['AvaliableHours']?.message && <p className="text-sm text-semibold text-red-600 mt-1.5 cursor-default">
+            {errors['AvaliableHours']?.message && <p className="text-sm font-semibold text-red-600 mt-1.5 cursor-default">
                 {errors['AvaliableHours']?.message.toString()}
             </p>}  
             <WeeklyHourPicker />       
             <MyStandardButton Type="submit" Text="Zapisz harmonogram" onClick={() => {}} 
                 Icon="icon-[mingcute--schedule-fill]" 
-                ClassName="ml-auto mt-8 bg-brand-purple-light hover:text-dark px-20" 
+                ClassName="mt-8 bg-brand-purple-light hover:text-dark px-8 mx-auto md:px-20 md:ml-auto md:mr-0 w-auto" 
             />
         </>
     );

@@ -7,7 +7,7 @@ export default function ToUpperCase<T>(CurrentObject: T, ExcludedKeys: (keyof T)
             const CamelCaseKey = Key.charAt(0).toUpperCase() + Key.slice(1);
 
             if (Array.isArray(Value)) {
-                Result[CamelCaseKey as keyof T] = ToUpperCaseArrayHelper(Value, ExcludedKeys);
+                Result[CamelCaseKey as keyof T] = ToUpperCaseArray(Value, ExcludedKeys);
             } else if (typeof Value === 'object' && Value !== null) {
                 // Recursively process nested objects
                 Result[CamelCaseKey as keyof T] = ToUpperCase(Value as T, ExcludedKeys) as T[Extract<keyof T, string>];
@@ -20,10 +20,10 @@ export default function ToUpperCase<T>(CurrentObject: T, ExcludedKeys: (keyof T)
     return Result;
 };
 
-const ToUpperCaseArrayHelper = <T>(CurrentArray: any, ExcludedKeys: (keyof T)[] = []) => {
+export const ToUpperCaseArray = <T>(CurrentArray: any, ExcludedKeys: (keyof T)[] = []) => {
     for (let i = 0; i < CurrentArray.length; i++) {
         if (Array.isArray(CurrentArray[i])) {
-            ToUpperCaseArrayHelper(CurrentArray[i], ExcludedKeys);
+            ToUpperCaseArray(CurrentArray[i], ExcludedKeys);
         } else if (typeof CurrentArray[i] === 'object' && CurrentArray[i] !== null) {
             CurrentArray[i] = ToUpperCase(CurrentArray[i] as T, ExcludedKeys) as T[Extract<keyof T, string>];
         }

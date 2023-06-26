@@ -20,7 +20,7 @@ function ProfileLayout({ children } : { children: React.ReactNode }) {
                 //style={{background: '#f6f7fb'}}
             >
                 <NavigationBar IsMobile={IsMobileUsed} ToggleNavigation={ToggleNavigation} />
-                <EuiPageBody paddingSize="xl" restrictWidth={1200}>
+                <EuiPageBody paddingSize="xl" restrictWidth={1200} style={{ width: '100%' }}>
                     {children}
                 </EuiPageBody>
             </div>

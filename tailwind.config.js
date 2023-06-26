@@ -34,8 +34,10 @@ module.exports = {
         'neon-blue': '#0d3cfb',
         'neon-purple': '#4b50ec',
         'neon-light-blue': '#00d4ff',
+        'normal-blue': '#316dff',
         'light-blue': '#4da1ff',
         'very-light-blue': '#90c2ff',
+        'extremely-light-blue': '#cfe5ff',
         'contrast-light-orange': '#fa714f',
         'contrast-yellow': '#feb435',
         'light-green': 'rgb(46, 125, 50)',
@@ -73,8 +75,10 @@ module.exports = {
         'neon-blue': '#0d3cfb',
         'neon-purple': '#4b50ec',
         'neon-light-blue': '#00d4ff',
+        'normal-blue': '#316dff',
         'light-blue': '#4da1ff',
         'very-light-blue': '#90c2ff',
+        'extremely-light-blue': '#cfe5ff',
         'contrast-light-orange': '#fa714f',
         'contrast-yellow': '#feb435',
         'soft-green': 'rgb(237, 247, 237)',
@@ -99,7 +103,8 @@ module.exports = {
         'OJA': '#d0222c',
       },
       boxShadow: {
-        'steep-jjt': '0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.04)'
+        'steep-jjt': '0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.04)',
+        'soft-jjt': 'rgba(225, 232, 240, 0.7) 0px 2px 18px 10px;'
       }
     },
   },

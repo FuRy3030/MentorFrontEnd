@@ -5,8 +5,8 @@ import GraphQLClient from "../../../GraphQLClient";
 import IProfileForm from "../../../types/profile/IProfileForm";
 
 const INSERT_NEW_PROFILE_DETAILS_MUTATION = gql`
-    mutation insertTutorDetails($input: TutorDetailsAPIInput!) {
-        insertTutorDetails(entity: $input) {
+    mutation InsertTutorDetails($input: TutorDetailsAPIInput!) {
+        InsertTutorDetails(entity: $input) {
             id
             tutorId
             geoLocation {
@@ -29,8 +29,8 @@ const INSERT_NEW_PROFILE_DETAILS_MUTATION = gql`
 `;
 
 const UPDATE_PROFILE_DETAILS_MUTATION = gql`
-    mutation updateTutorDetails($input: TutorDetailsInput!) {
-        updateTutorDetails(entity: $input) {
+    mutation UpdateTutorDetails($input: TutorDetailsInput!) {
+        UpdateTutorDetails(entity: $input) {
             id
             tutorId
             geoLocation {
@@ -57,13 +57,13 @@ const UseProfileMutation = ((OnSuccess?: Function) => {
         ['UpdateUserProfile'],
         async (UpdatedProfile: IProfileForm) => {
             if (UpdatedProfile.Id) {
-                const Response = await GraphQLClient.request<{ updateTutorDetails: IProfileForm }>(
+                const Response = await GraphQLClient.request<{ UpdateTutorDetails: IProfileForm }>(
                     UPDATE_PROFILE_DETAILS_MUTATION, { input: ToCamelCase(UpdatedProfile) });
-                return Response.updateTutorDetails as IProfileForm;
+                return Response.UpdateTutorDetails as IProfileForm;
             } else {
-                const Response = await GraphQLClient.request<{ insertTutorDetails: IProfileForm }>(
+                const Response = await GraphQLClient.request<{ InsertTutorDetails: IProfileForm }>(
                     INSERT_NEW_PROFILE_DETAILS_MUTATION, { input: ToCamelCase(UpdatedProfile, ['Id']) });
-                return Response.insertTutorDetails as IProfileForm;
+                return Response.InsertTutorDetails as IProfileForm;
             }
         },
         {
