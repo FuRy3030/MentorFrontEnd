@@ -21,9 +21,9 @@ function RegisterForm() {
 
     if (isSuccess) {
         return <ConfirmationBox 
-            Icon="icon-[bi--send-check-fill]"
-            Heading="Wysłano e-maila potwierdzającego rejestrację" 
-            Description="Dziękujemy za rejestrację. Wysłaliśmy na twoją pocztę e-maila zawierającego link do potwierdzenia twojego adresu. Po jego potwierdzeniu będziesz mógł się zalogować i kontynuować proces weryfikacji."
+            Icon="icon-[material-symbols--person-add-rounded]"
+            Heading="Twoje konto zostało założone" 
+            Description="Dziękujemy za rejestrację. Twoje konto zostało pomyślnie założone. Teraz możesz się zalogować i dopełnić ostatnich formalności aby zostać tutorem"
             ClassName="my-4"
         />
     } else {
@@ -40,7 +40,7 @@ function RegisterForm() {
                         Label="Tworząc konto na Platformie zgadzam się na Regulamin i Politykę Prywatności" FullWidth 
                     />
                     <MyStandardButton Type="submit" Text="Zarejestruj się" onClick={() => {}} 
-                        Icon="icon-[jam--log-in]" 
+                        Icon="icon-[material-symbols--person-add-rounded]" 
                         ClassName="ml-auto mt-2 px-5 bg-dark hover:text-dark" 
                     />
                 </MyFormProvider>

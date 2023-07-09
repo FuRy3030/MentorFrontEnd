@@ -81,7 +81,7 @@ function PricingForm() {
             })}
             <MyStandardButton Type="submit" Text="Zapisz mój cennik" onClick={() => {}} 
                 Icon="icon-[fluent--people-money-20-filled]" 
-                ClassName="mt-4 mb-6 bg-neon-light-blue hover:text-dark px-8 mx-auto md:px-20 md:ml-auto md:mr-0 w-auto" 
+                ClassName="mt-4 mb-6 bg-brand-purple-light hover:text-dark px-8 mx-auto md:px-20 md:ml-auto md:mr-0 w-auto" 
             />
             <SuccessErrorToastsPair 
                 SuccessTitle="Cennik został zaaktualizowany"

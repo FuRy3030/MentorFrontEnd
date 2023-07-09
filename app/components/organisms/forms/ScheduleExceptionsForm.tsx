@@ -111,7 +111,7 @@ const InnerForm = (Props: { ScheduleQuery: UseQueryResult<IScheduleForm, ClientE
         const EditableDate = EditableDates.find((Date) => Date.date().toString() === Day);
         const DayOfTheWeek = EditableDate?.day();
         const EditableDateWithTime = SetTime(EditableDate!, Hour);
-        const AvaliableHoursSchedule = ScheduleQuery.data!.AvaliableHours[DayOfTheWeek!].item2;
+        const AvaliableHoursSchedule = ScheduleQuery.data!.AvaliableHours[DayOfTheWeek!].Item2;
 
         if (AvaliableHoursSchedule.includes(Hour)) {
             if (Action === 'ADD') {
@@ -161,7 +161,7 @@ const InnerForm = (Props: { ScheduleQuery: UseQueryResult<IScheduleForm, ClientE
                         key={Index}
                         Hours={Hours} 
                         ActiveHours={GetFullAvaliableHours(
-                            ScheduleQuery.data!.AvaliableHours[EditableDate.day()].item2, 
+                            ScheduleQuery.data!.AvaliableHours[EditableDate.day()].Item2, 
                             EditableDate, 
                             watch('ExceptionDates'), 
                             watch('AdditionDates')

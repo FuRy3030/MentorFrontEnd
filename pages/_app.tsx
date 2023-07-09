@@ -9,6 +9,7 @@ import ProfileLayout from '../layouts/ProfileLayout';
 import moment from 'moment';
 import 'moment-timezone';
 import ListItemsLayout from '../layouts/ListItemsLayout';
+import AuthorizeProvider from '../app/providers/AuthorizeProvider';
 
 function MyApp({ Component, pageProps, router }: AppProps) {
     // moment.tz.setDefault('Europe/Warsaw');
@@ -21,18 +22,20 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
     return (
         <QueryClientProvider client={DefaultQueryClient}>
-            {ShouldRenderProfileLayout ? 
-                <ProfileLayout>
+            <AuthorizeProvider>
+                {ShouldRenderProfileLayout ? 
+                    <ProfileLayout>
+                        <Component {...pageProps} />
+                    </ProfileLayout>
+                    :
+                    ShouldRenderListLayout ?
+                    <ListItemsLayout>
+                        <Component {...pageProps} />
+                    </ListItemsLayout>
+                    :
                     <Component {...pageProps} />
-                </ProfileLayout>
-                :
-                ShouldRenderListLayout ?
-                <ListItemsLayout>
-                    <Component {...pageProps} />
-                </ListItemsLayout>
-                :
-                <Component {...pageProps} />
-            }
+                }
+            </AuthorizeProvider>
         </QueryClientProvider>
     );
 }

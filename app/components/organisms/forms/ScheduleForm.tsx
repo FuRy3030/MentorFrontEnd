@@ -87,7 +87,7 @@ const InnerForm = () => {
     const DaysOfTheWeek = UseDaysOfTheWeek();
 
     const OnChangeAvaliableHours = () => {
-        const AvaliableHours = new Array<{ item1: string; item2: string[] }>();
+        const AvaliableHours = new Array<{ Item1: string; Item2: string[] }>();
         const Hours = GetHoursBetweenTwoDates(watch("ScheduleStartTime"), watch("ScheduleEndTime"), 
             parseInt(watch("LessonDuration")));
 
@@ -101,7 +101,7 @@ const InnerForm = () => {
         }
 
         DaysOfTheWeek.forEach((Day) => {
-            AvaliableHours.push({ item1: Day, item2: Hours });
+            AvaliableHours.push({ Item1: Day, Item2: Hours });
         });
 
         setValue("AvaliableHours", AvaliableHours);

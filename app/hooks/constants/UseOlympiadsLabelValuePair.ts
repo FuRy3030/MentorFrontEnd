@@ -10,7 +10,7 @@ export default function UseOlympiadsLabelValuePair() {
         {
             label: 'Olimpiada Przedsiębiorczości',
             value: 'OP',
-            color: '#004a8e'
+            color: 'rgb(31, 94, 182)'
         },
         {
             label: 'Olimpiada Matematyczna',
@@ -20,17 +20,17 @@ export default function UseOlympiadsLabelValuePair() {
         {
             label: 'Olimpiada Informatyczna',
             value: 'OI',
-            color: '#0994dc'
+            color: 'rgb(21, 124, 252)'
         },
         {
             label: 'Olimpiada Fizyczna',
             value: 'OFIZ',
-            color: '#dfdfdf'
+            color: 'rgb(156, 39, 176)'
         },
         {
             label: 'Olimpiada Chemiczna',
             value: 'OLCHEM',
-            color: '#fbb040'
+            color: 'rgb(255, 125, 80)'
         },
         {
             label: 'Olimpiada Biologiczna',
@@ -45,7 +45,7 @@ export default function UseOlympiadsLabelValuePair() {
         {
             label: 'Olimpiada Geograficzna',
             value: 'OGEO',
-            color: '#fcd961'
+            color: 'rgb(255, 175, 0)'
         },
         {
             label: 'Olimpiada Literatury i Języka Polskiego',
@@ -55,12 +55,12 @@ export default function UseOlympiadsLabelValuePair() {
         {
             label: 'Olimpiada „Losy żołnierza i dzieje oręża polskiego”',
             value: 'LOSY',
-            color: '#c7ced5'
+            color: '#be7a22'
         },
         {
             label: 'Olimpiada Filozoficzna',
             value: 'OFIL',
-            color: '#eddfbe'
+            color: '#ff9710'
         },
         {
             label: 'Olimpiada Wiedzy o Polsce i Świecie Współczesnym',
@@ -70,7 +70,7 @@ export default function UseOlympiadsLabelValuePair() {
         {
             label: 'Olimpiada Astronomiczna',
             value: 'OASTRO',
-            color: '#fbd1c7'
+            color: '#d88bff'
         },
         {
             label: 'Olimpiada Języka Angielskiego',
@@ -85,7 +85,7 @@ export default function UseOlympiadsLabelValuePair() {
         {
             label: 'Olimpiada Języka Francuskiego',
             value: 'OJFR',
-            color: '#d0222c'
+            color: '#002a7e'
         }
     ] as EuiComboBoxOptionOption<string>[];
 };

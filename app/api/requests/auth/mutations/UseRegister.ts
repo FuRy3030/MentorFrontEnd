@@ -5,7 +5,7 @@ import IRegisterForm from "../../../types/auth/IRegisterForm";
 import ToCamelCase from "../../../../helpers/universal/ToCamelCase";
 
 const ADD_USER_MUTATION = gql`
-  mutation addUser($input: MentorAPIInput!) {
+  mutation addUser($input: TutorAPIInput!) {
     addUser(newUser: $input)
   }
 `;

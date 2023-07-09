@@ -4,6 +4,7 @@ import request, { ClientError, gql } from "graphql-request";
 import ILoginForm from "../../../types/auth/ILoginForm";
 import { SetAuthHeader } from "../../../GraphQLClient";
 import { useRouter } from "next/router";
+import AuthState from "../../../../store/auth/AuthState";
 
 const AUTHENTICATE_USER_MUTATION = gql`
   mutation login($email: String!, $password: String!) {
@@ -23,8 +24,20 @@ const UseLogin = (() => {
         },
         {
             onSuccess: (Token: string) => {
+                const ExpirationDate = new Date();
+                ExpirationDate.setHours(ExpirationDate.getHours() + 12);
                 localStorage.setItem('session', Token);
+                localStorage.setItem('expiration', ExpirationDate.toISOString());
                 SetAuthHeader(Token);
+
+                AuthState.IsLogged = true;
+                setTimeout(() => {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('expiration');
+                    AuthState.IsLogged = false;
+                    Router.push("/auth/login");
+                }, 43200000);
+
                 Router.push('/');
             }
         }

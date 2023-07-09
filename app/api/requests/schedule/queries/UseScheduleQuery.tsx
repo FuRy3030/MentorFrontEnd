@@ -8,7 +8,7 @@ const GET_USER_SCHEDULE_QUERY = gql`
     query {
         GetTutorScheduleForUser {
             id
-            userId
+            tutorId
             timezone
             lessonDuration
             scheduleStartTime

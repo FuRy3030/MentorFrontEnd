@@ -10,14 +10,14 @@ function WeeklyHourPicker() {
     const AvaliableHours = watch("AvaliableHours");
     
     const ToggleHour = (Day: string, Hour: string, Action: string) => {
-        const AvaliableHours: { item1: string; item2: string[] } [] = watch("AvaliableHours");
+        const AvaliableHours: { Item1: string; Item2: string[] } [] = watch("AvaliableHours");
         const HoursForGivenDayIndex: number = AvaliableHours
-            .findIndex((AvaliableHoursDay) => AvaliableHoursDay.item1 === Day);
+            .findIndex((AvaliableHoursDay) => AvaliableHoursDay.Item1 === Day);
 
         if (Action === 'ADD' && HoursForGivenDayIndex >= 0) {
-            AvaliableHours[HoursForGivenDayIndex].item2.push(Hour);
+            AvaliableHours[HoursForGivenDayIndex].Item2.push(Hour);
         } else if (HoursForGivenDayIndex >= 0) {
-            AvaliableHours[HoursForGivenDayIndex].item2 = AvaliableHours[HoursForGivenDayIndex].item2
+            AvaliableHours[HoursForGivenDayIndex].Item2 = AvaliableHours[HoursForGivenDayIndex].Item2
                 .filter(ExistingHour => ExistingHour !== Hour);
         }
 
@@ -27,12 +27,12 @@ function WeeklyHourPicker() {
     if (Hours.length > 0) {
         return (
             <div className="flex flex-row justify-evenly my-7">
-                {AvaliableHours.map((AvaliableHoursDay: { item1: string; item2: string[] }) => (
+                {AvaliableHours.map((AvaliableHoursDay: { Item1: string; Item2: string[] }) => (
                     <MyDaySchedulePicker 
-                        Day={AvaliableHoursDay.item1} 
-                        key={AvaliableHoursDay.item1}
+                        Day={AvaliableHoursDay.Item1} 
+                        key={AvaliableHoursDay.Item1}
                         Hours={Hours} 
-                        ActiveHours={AvaliableHoursDay.item2}
+                        ActiveHours={AvaliableHoursDay.Item2}
                         ToggleHour={ToggleHour} 
                     />
                 ))}

@@ -1,5 +1,10 @@
+import { useRouter } from "next/router";
+import AuthState from "../../../store/auth/AuthState";
+import RectangularButton from "../../atoms/buttons/RectangularButton";
+
 function NavigationBar(Props: { IsMobile: boolean, ToggleNavigation: (IsOpne: boolean) => void }) {
     const { IsMobile, ToggleNavigation } = Props;
+    const Router = useRouter();
 
     if (IsMobile) {
         return (
@@ -16,6 +21,17 @@ function NavigationBar(Props: { IsMobile: boolean, ToggleNavigation: (IsOpne: bo
                         <img className="w-[125px] h-auto mt-2 mb-0" src="/logo/competify-logo.png" alt="Logo" />
                     </div>
                 </div>
+                <RectangularButton 
+                    Text="Wyloguj"
+                    Icon="icon-[ion--power]"
+                    OnClick={() => {
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('expiration');
+                        AuthState.IsLogged = false;
+                        Router.push("/auth/login");
+                    }}
+                    ClassName="ml-auto mr-2"
+                />
             </div>
         );
     } else {
@@ -26,6 +42,17 @@ function NavigationBar(Props: { IsMobile: boolean, ToggleNavigation: (IsOpne: bo
                     <h2 className="text-2xl font-extrabold text-deep-dark mb-0">Witaj, Adam</h2>
                     <h6 className="text-base font-semibold text-semi-dark">Stwórzmy razem najlepszy tutoring do olimpiady</h6>
                 </div>
+                <RectangularButton 
+                    Text="Wyloguj"
+                    Icon="icon-[ion--power]"
+                    OnClick={() => {
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('expiration');
+                        AuthState.IsLogged = false;
+                        Router.push("/auth/login");
+                    }}
+                    ClassName="ml-auto mr-6"
+                />
             </div>
         );
     }

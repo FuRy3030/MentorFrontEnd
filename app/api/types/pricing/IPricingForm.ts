@@ -14,7 +14,7 @@ export default interface IPricingForm {
     IsDoublePackagePriceActive: boolean;
     IsTriplePackagePriceActive: boolean;
     IsFivePackagePriceActive: boolean;
-    IsTenPackagePriceActive : boolean;
+    IsTenPackagePriceActive: boolean;
 };
 
 export const IPricingFormZodObject = z.array(z.object({
