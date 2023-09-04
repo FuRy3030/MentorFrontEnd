@@ -108,7 +108,7 @@ module.exports = {
       },
       boxShadow: {
         'steep-jjt': '0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.04)',
-        'soft-jjt': 'rgba(225, 232, 240, 0.7) 0px 2px 18px 10px;'
+        'soft-jjt': 'rgba(225, 232, 240, 0.7) 0px 2px 18px 10px'
       }
     },
   },
