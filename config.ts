@@ -10,7 +10,7 @@ const DevConfig: Config = {
 
 const ProdConfig: Config = {
     GraphQLUrl: 'https://competifymentorbackendtestserver.azurewebsites.net/graphql/',
-    FilesUrl: 'https://competifymentorbackendtestserver.azurewebsites.net/files/'
+    FilesUrl: 'https://competifymentorbackendtestserver.azurewebsites.net/files'
 };
   
 export const Config = process.env.NODE_ENV === 'production' ? ProdConfig : DevConfig;
