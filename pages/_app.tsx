@@ -14,7 +14,7 @@ import AuthorizeProvider from '../app/providers/AuthorizeProvider';
 function MyApp({ Component, pageProps, router }: AppProps) {
     // moment.tz.setDefault('Europe/Warsaw');
     const RoutesWithProfileLayout = ['/', '/schedule', '/profile'];
-    const RoutesWithListLayout = ['/pricing'];
+    const RoutesWithListLayout = ['/pricing', '/payments', '/meetings', '/verify/stripe'];
 
     // Check if the current route should have the layout
     const ShouldRenderProfileLayout: boolean = RoutesWithProfileLayout.includes(router.route);

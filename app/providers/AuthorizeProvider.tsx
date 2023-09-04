@@ -12,8 +12,6 @@ function AuthorizeProvider(Props: AuthorizeProviderProps) {
     const Router = useRouter();
 
     useEffect(() => {
-        console.log(IsUserLogged);
-        console.log(Router.route);
         if (IsUserLogged && Router.route.startsWith('/auth')) {
             Router.push('/');
         } else if (!IsUserLogged && !Router.route.startsWith('/auth')) {

@@ -7,7 +7,7 @@ import MyCheckbox from "../../atoms/forms/MyCheckbox";
 import MyFormProvider from "../../../providers/MyFormProvider";
 import UseRegister from "../../../api/requests/auth/mutations/UseRegister";
 import MyToast from "../../modals/toasts/MyToast";
-import ConfirmationBox from "../../molecules/confirmation/ConfirmationBox";
+import ConfirmationBox from "../../molecules/alerts/ConfirmationBox";
 
 function RegisterForm() {
     const { mutate, error, isSuccess } = UseRegister();

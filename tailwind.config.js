@@ -42,6 +42,8 @@ module.exports = {
         'contrast-yellow': '#feb435',
         'light-green': 'rgb(46, 125, 50)',
         'dark-green': 'rgb(30, 70, 32)',
+        'error-alert': '#d32f2f',
+        'info-alert': '#0288d1',
         // Olympiad Colors
         'OWE': '#019642',
         'OP': 'rgb(31, 94, 182)',
@@ -83,6 +85,8 @@ module.exports = {
         'contrast-yellow': '#feb435',
         'soft-green': 'rgb(237, 247, 237)',
         'dark-gray': '#f3f6f8',
+        'error-alert': 'rgb(253, 237, 237)',
+        'info-alert': 'rgb(229, 246, 253)',
         // Olympiad Colors
         'OWE': '#019642',
         'OP': 'rgb(31, 94, 182)',

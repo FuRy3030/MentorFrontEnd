@@ -19,7 +19,7 @@ function PageHeader(Props: PageHeaderProps) {
                     Paragraphs={Props.Paragraphs}
                     ClassName="mb-6 w-[100%] lg:mb-0 lg:w-[50%]"
                 />
-                <div className="relative w-[100%] lg:w-[47.5%]">
+                <div className="relative w-[100%] lg:w-[47.5%] lg:mt-auto lg:mb-auto">
                     {Props.children}
                     <img 
                         className="w-[100%]" 

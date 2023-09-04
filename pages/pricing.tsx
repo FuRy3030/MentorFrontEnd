@@ -1,9 +1,12 @@
+import UseMe from "../app/api/requests/auth/queries/UseMe";
 import PriceRange from "../app/components/atoms/miscellaneous_and_decorations/PriceRange";
-import IntroductionHeader from "../app/components/molecules/typography/IntroductionHeader";
+import StripeAccountConfigureAlert from "../app/components/molecules/alerts/StripeAccountConfigureAlert";
 import PricingForm from "../app/components/organisms/forms/PricingForm";
 import PageHeader from "../app/components/organisms/page_parts/PageHeader";
 
 function Page() {
+    const { data } = UseMe();
+    
     return (
         <>
             <PageHeader
@@ -26,7 +29,8 @@ function Page() {
             <h1 className="mt-10 text-4xl text-dark font-bold cursor-default text-center mx-auto px-6">
                 Moje stawki za usługi
             </h1>
-            <PricingForm />
+            {!data?.IsStripeVerified && <StripeAccountConfigureAlert />}
+            {data?.IsStripeVerified && <PricingForm />}
         </>
     );
 };

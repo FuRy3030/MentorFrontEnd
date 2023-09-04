@@ -28,7 +28,6 @@ function MyFilePicker(Props: MyFilePickerProps) {
                     if (Files) {
                         const FilesArray = Array.from(Files);
                         for (const CurrentFile of FilesArray) {
-                            console.log(CurrentFile.size, Props.MaxSize);
                             if (CurrentFile.size > Props.MaxSize) {
                                 setError(Props.Name, { type: 'manual', message: 'Plik jest za duży!' });
                                 return;

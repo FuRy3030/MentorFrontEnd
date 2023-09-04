@@ -4,7 +4,7 @@ import MyFormProvider from "../../../providers/MyFormProvider";
 import MyStandardButton from "../../atoms/buttons/MyStandardButton";
 import MyTextField from "../../atoms/forms/MyTextField";
 import MyToast from "../../modals/toasts/MyToast";
-import ConfirmationBox from "../../molecules/confirmation/ConfirmationBox";
+import ConfirmationBox from "../../molecules/alerts/ConfirmationBox";
 
 function PasswordResetForm() {
     const { mutate, error, isSuccess, isLoading } = UseSendPasswordResetLink();

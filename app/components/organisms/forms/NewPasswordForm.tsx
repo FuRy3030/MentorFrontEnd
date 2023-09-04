@@ -5,7 +5,7 @@ import MyFormProvider from "../../../providers/MyFormProvider";
 import MyStandardButton from "../../atoms/buttons/MyStandardButton";
 import MyPasswordField from "../../atoms/forms/MyPasswordField";
 import MyToast from "../../modals/toasts/MyToast";
-import ConfirmationBox from "../../molecules/confirmation/ConfirmationBox";
+import ConfirmationBox from "../../molecules/alerts/ConfirmationBox";
 
 function NewPasswordForm({ Token }: { Token?: string }) {
     const { mutate, error, isSuccess, isLoading } = UseNewPassword();
