@@ -3,14 +3,23 @@ import { FileData } from "../types/FileData";
 import { useQuery } from "@tanstack/react-query";
 import { Config } from "../../../config";
 
-const UseFilesQuery = ((FileIdentifier: string, Prefix: string) => {
+const UseFilesQuery = ((FileIdentifier: string, Prefix: string, IsAuthSessionIncluded: boolean = false) => {
     return useQuery<Blob [], AxiosError, Blob []>(
         ['FilesQuery', FileIdentifier, Prefix],
         async () => {
             const FileBlobs: Blob [] = [];
-            const Response = await axios.get<FileData []>(Config.FilesUrl, { 
-                params: { FileIdentifier: FileIdentifier, Prefix: Prefix } 
-            });
+            let Response: AxiosResponse<FileData []>;
+
+            if (IsAuthSessionIncluded) {
+                Response = await axios.get<FileData []>(Config.FilesUrl, { 
+                    params: { FileIdentifier: FileIdentifier, Prefix: Prefix },
+                    headers: { Authorization: `Bearer ${localStorage.getItem('session')}` } 
+                });
+            } else {
+                Response = await axios.get<FileData []>(Config.FilesUrl, { 
+                    params: { FileIdentifier: FileIdentifier, Prefix: Prefix }
+                });
+            }
 
             Response.data.forEach((FileData: FileData)  => {
                 const { fileBytes } = FileData;

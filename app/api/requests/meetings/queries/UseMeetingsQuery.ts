@@ -11,6 +11,7 @@ const GET_MEETINGS_QUERY = gql`
             studentName
             educationalServiceName
             date
+            isPaid
         }
     }
 `;

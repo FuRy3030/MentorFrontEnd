@@ -9,6 +9,7 @@ interface AvatarWithRingsProps {
 }
 
 function AvatarWithRings(Props: AvatarWithRingsProps) {
+    console.log(Props);
     return (
         <div 
             className={clsx("flex items-center justify-center bg-clip-padding rounded-full", Props.ClassName)}

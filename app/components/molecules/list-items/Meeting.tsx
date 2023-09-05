@@ -7,6 +7,7 @@ interface MeetingProps {
     Color: string;
     EducationalServiceName: string;
     Date: Moment;
+    IsPaid: boolean;
     ClassName?: string;
 }
 
@@ -26,10 +27,15 @@ function Meeting(Props: MeetingProps) {
             <h3 className="flex items-center text-lg font-bold text-dark mb-0 leading-6" style={{ color: Props.Color }}>
                 {Props.EducationalServiceName}
             </h3>
-            <h6 className="flex items-center mt-2 justify-end w-full text-base font-semibold text-semi-dark">
-                <span className="icon-[material-symbols--event-outline-rounded] mr-1" />
-                {Props.Date.format("DD.MM.YYYY HH:mm")}
-            </h6>
+            <div className="w-full flex justify-between mt-2">
+                <h6 className={clsx("text-base font-bold", Props.IsPaid ? 'text-green-500' : 'text-red-600')}>
+                    {Props.IsPaid ? 'Opłacone' : 'Nieopłacone'}
+                </h6>
+                <h6 className="flex items-center w-auto text-base font-semibold text-semi-dark">
+                    <span className="icon-[material-symbols--event-outline-rounded] mr-1" />
+                    {Props.Date.format("DD.MM.YYYY HH:mm")}
+                </h6>
+            </div>
         </div>
     );
 };
