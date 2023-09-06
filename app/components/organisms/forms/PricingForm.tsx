@@ -16,7 +16,7 @@ function PricingForm() {
     const QueryClient = useQueryClient();
     const PricingQuery = UsePricingQuery();
     const ProfileQuery = UseProfileQuery();
-    const { mutate, isSuccess, isError } = UsePricingMutation(() => {
+    const { mutate, isSuccess, isError, isLoading } = UsePricingMutation(() => {
         QueryClient.invalidateQueries(["UserPricingModules"]);
     });
 
@@ -66,7 +66,7 @@ function PricingForm() {
         <MyFormProvider<IPricingForm []> FormResolver={IPricingFormResolver} DefaultValues={DefaultValues}
             OnSubmit={(FormData: IPricingForm []) => mutate(FormData)} ClassName="mx-auto max-w-[1050px] px-8 md:px-11"
             IsFetched={ProfileQuery.isFetched && PricingQuery.isFetched} 
-            IsLoading={ProfileQuery.isLoading || PricingQuery.isLoading}
+            IsLoading={ProfileQuery.isLoading || PricingQuery.isLoading || isLoading}
         >
             {ProfileQuery.data?.Olympiads.map((Olympiad, Index: number) => {
                 return (

@@ -4,19 +4,12 @@ import ScheduleForm from "../app/components/organisms/forms/ScheduleForm";
 function Page() {
 
     return (
-        <>
-            {/* <ScheduleForm /> */}
-             {/* <MySelectField<string> 
-                Label="Czas trwania zajęć"
-                Name="LessonDuration"
-                Options={[
-                    { value: "00:30", inputDisplay: <span>0:30</span>, dropdownDisplay: <span>0:30</span> },
-                    { value: "01:00", inputDisplay: <span>01:00</span>, dropdownDisplay: <span>01:00</span> },
-                    { value: "02:00", inputDisplay: <span>02:00</span>, dropdownDisplay: <span>02:00</span> }
-                ]}
-                FullWidth
-            /> */}
-        </>
+        <div className="flex justify-center items-center mt-16">
+            <span className="icon-[material-symbols--construction-rounded] text-6xl text-semi-dark" />
+            <span className="text-center text-2xl text-semi-dark font-bold ml-2.5">
+                Funkcjonalność jeszcze w budowie :)
+            </span>
+        </div>
     );
 };
 

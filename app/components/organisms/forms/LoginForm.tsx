@@ -7,7 +7,7 @@ import MyTextField from "../../atoms/forms/MyTextField";
 import MyToast from "../../modals/toasts/MyToast";
 
 function LoginForm() {
-    const { mutate, error } = UseLogin();
+    const { mutate, error, isLoading } = UseLogin();
     const Values: ILoginForm = {
         Email: "",
         Password: ""
@@ -16,7 +16,9 @@ function LoginForm() {
     return (
         <>
             <MyFormProvider<ILoginForm> FormResolver={ILoginFormResolver} DefaultValues={Values}
-                OnSubmit={(FormData: ILoginForm) => mutate(FormData)} ClassName="mx-auto max-w-[500px]">
+                OnSubmit={(FormData: ILoginForm) => mutate(FormData)} ClassName="mx-auto max-w-[500px]"
+                IsLoading={isLoading}
+            >
                 <MyTextField Name="Email" Label="Email" Placeholder="Wpisz swój adres email" FullWidth />
                 <MyPasswordField Name="Password" Label="Hasło" Placeholder="Wpisz swoje hasło" FullWidth />
                 <MyStandardButton Type="submit" Text="Zaloguj się" onClick={() => {}} 

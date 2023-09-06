@@ -19,7 +19,7 @@ import UseScheduleMutation from "../../../api/requests/schedule/mutations/UseSch
 function ScheduleExceptionsForm() {
     const QueryClient = useQueryClient();
     const ScheduleQuery = UseScheduleQuery();
-    const { mutate, isSuccess, isError } = UseScheduleMutation(() => {
+    const { mutate, isSuccess, isError, isLoading } = UseScheduleMutation(() => {
         QueryClient.invalidateQueries(["UserSchedule"]);
     });
     const CurrentDate = moment().tz('Europe/Warsaw');
@@ -48,7 +48,7 @@ function ScheduleExceptionsForm() {
     return (
         <MyFormProvider<IScheduleForm> FormResolver={IScheduleFormResolver} DefaultValues={Values} 
             IsFetched={ScheduleQuery.isFetched} OnSubmit={(FormData: IScheduleForm) => mutate(FormData)} 
-            ClassName="mx-auto max-w-[750px] my-6"
+            ClassName="mx-auto max-w-[750px] my-6" IsLoading={ScheduleQuery.isLoading || isLoading}
         >
             <InnerForm 
                 ScheduleQuery={ScheduleQuery} 

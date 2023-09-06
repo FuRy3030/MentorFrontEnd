@@ -19,7 +19,7 @@ import UseProfileQuery from "../../../api/requests/profile/queries/UseProfileQue
 function ProfileForm() {
     const QueryClient = useQueryClient();
     const ProfileQuery = UseProfileQuery();
-    const { mutate, isSuccess, isError } = UseProfileMutation(() => {
+    const { mutate, isSuccess, isError, isLoading } = UseProfileMutation(() => {
         QueryClient.invalidateQueries(["UserProfile"]);
     });
     let DefaultValues = {};
@@ -63,7 +63,7 @@ function ProfileForm() {
     return (
         <MyFormProvider<IProfileForm> FormResolver={IProfileFormResolver} DefaultValues={DefaultValues}
             OnSubmit={(FormData: IProfileForm) => mutate(FormData)} ClassName="mx-auto max-w-[700px]"
-            IsFetched={ProfileQuery.isFetched} IsLoading={ProfileQuery.isLoading}
+            IsFetched={ProfileQuery.isFetched} IsLoading={ProfileQuery.isLoading || isLoading}
         >
             <h2 className="text-2xl font-bold text-dark mb-6">Pozwól swoim uczniom poznać się bliżej</h2>
             <InnerForm DefaultValues={DefaultValues as IProfileForm} />

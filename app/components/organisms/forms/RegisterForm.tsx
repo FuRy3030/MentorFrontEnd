@@ -10,7 +10,7 @@ import MyToast from "../../modals/toasts/MyToast";
 import ConfirmationBox from "../../molecules/alerts/ConfirmationBox";
 
 function RegisterForm() {
-    const { mutate, error, isSuccess } = UseRegister();
+    const { mutate, error, isSuccess, isLoading } = UseRegister();
     const Values: IRegisterForm = {
         FirstName: "",
         LastName: "",
@@ -31,6 +31,7 @@ function RegisterForm() {
             <>
                 <MyFormProvider<IRegisterForm> FormResolver={IRegisterFormResolver} DefaultValues={Values}
                     OnSubmit={(FormData: IRegisterForm) => mutate(FormData)} ClassName="mx-auto max-w-[500px]"
+                    IsLoading={isLoading}
                 >
                     <MyTextField Name="FirstName" Label="Imię" Placeholder="Wpisz swoje imię" FullWidth />
                     <MyTextField Name="LastName" Label="Nazwisko" Placeholder="Wpisz swoje nazwisko" FullWidth />
