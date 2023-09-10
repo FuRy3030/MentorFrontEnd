@@ -8,9 +8,14 @@ const DevConfig: Config = {
     FilesUrl: 'https://localhost:44378/files'
 };
 
-const ProdConfig: Config = {
+const TestProdConfig: Config = {
     GraphQLUrl: 'https://competifymentorbackendtestserver.azurewebsites.net/graphql/',
     FilesUrl: 'https://competifymentorbackendtestserver.azurewebsites.net/files'
 };
+
+const ProdConfig: Config = {
+    GraphQLUrl: 'https://competifymentorproduction.azurewebsites.net/graphql/',
+    FilesUrl: 'https://competifymentorproduction.azurewebsites.net/files'
+};
   
-export const Config = process.env.NODE_ENV === 'production' ? ProdConfig : DevConfig;
+export const Config = process.env.NODE_ENV === 'production' ? TestProdConfig : DevConfig;

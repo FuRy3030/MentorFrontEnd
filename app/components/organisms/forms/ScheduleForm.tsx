@@ -122,9 +122,9 @@ const InnerForm = () => {
                     Label="Czas trwania zajęć"
                     Name="LessonDuration"
                     Options={[
-                        { value: "30", inputDisplay: <span>00:30</span>, dropdownDisplay: <span className="text-sm text-semi-dark-alt font-semibold">Pół godziny</span> },
+                        // { value: "30", inputDisplay: <span>00:30</span>, dropdownDisplay: <span className="text-sm text-semi-dark-alt font-semibold">Pół godziny</span> },
                         { value: "60", inputDisplay: <span>01:00</span>, dropdownDisplay: <span className="text-sm text-semi-dark-alt font-semibold">Godzina zegarowa</span> },
-                        { value: "120", inputDisplay: <span>02:00</span>, dropdownDisplay: <span className="text-sm text-semi-dark-alt font-semibold">Dwie godziny zegarowe</span> }
+                        // { value: "120", inputDisplay: <span>02:00</span>, dropdownDisplay: <span className="text-sm text-semi-dark-alt font-semibold">Dwie godziny zegarowe</span> }
                     ]}
                     OnChange={OnChangeAvaliableHours}
                     FullWidth
