@@ -11,7 +11,7 @@ import SuccessErrorToastsPair from "../../modals/toasts/SuccessErrorToastsPair";
 function ProfileImageUploadBox() {
     const QueryClient = useQueryClient();
     const Methods = useForm<{ ProfileImage: File[] }>();
-    const FilesQuery = UseFilesQuery('Tutor', 'ProfileImage');
+    const FilesQuery = UseFilesQuery('Tutor', 'ProfileImage', true);
     const { mutate, isSuccess, isError, isLoading } = UseFilesMutation('Tutor', 'ProfileImage', () => {
         QueryClient.invalidateQueries(['FilesQuery', 'Tutor', 'ProfileImage']);
     });

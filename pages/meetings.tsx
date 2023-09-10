@@ -4,9 +4,11 @@ import IMeeting from "../app/api/types/meetings/IMeeting";
 import Meeting from "../app/components/molecules/list-items/Meeting";
 import PageHeader from "../app/components/organisms/page_parts/PageHeader";
 import UseOlympiadsLabelValuePair from "../app/hooks/constants/UseOlympiadsLabelValuePair";
+import LoadingScreen from "../app/components/LoadingScreen";
+import EmptyNotification from "../app/components/EmptyNotification";
 
 function Page() {  
-    const { data } = UseMeetingsQuery();
+    const { data, isLoading } = UseMeetingsQuery();
 
     return (
         <>
@@ -24,20 +26,27 @@ function Page() {
                 Moje zajęcia
             </h1>
             <div className="w-full mt-8 flex flex-row flex-wrap justify-between px-8">
-                {data?.map((TutorMeeting: IMeeting) => { 
-                    return (
-                        <Meeting 
-                            key={TutorMeeting.Id}
-                            StudentName={TutorMeeting.StudentName}
-                            Color={UseOlympiadsLabelValuePair().find((OlympiadData) => 
-                                OlympiadData.value === TutorMeeting.EducationalServiceName)?.color as string}
-                            EducationalServiceName={UseOlympiadsLabelValuePair().find((OlympiadData) => 
-                                OlympiadData.value === TutorMeeting.EducationalServiceName)?.label as string}
-                            Date={moment(TutorMeeting.Date)}
-                            ClassName="w-full md:w-[48%] mb-5"
-                        />
-                    );
-                })}
+                {isLoading ? 
+                    <LoadingScreen Message="Ładujemy twoje dane..." /> 
+                    : data?.length === 0 ? 
+                    <EmptyNotification Message="Narazie nie ma tu jeszcze żadnego spotkania" />
+                    :
+                    data?.map((TutorMeeting: IMeeting) => { 
+                        return (
+                            <Meeting 
+                                key={TutorMeeting.Id}
+                                StudentName={TutorMeeting.StudentName}
+                                Color={UseOlympiadsLabelValuePair().find((OlympiadData) => 
+                                    OlympiadData.value === TutorMeeting.EducationalServiceName)?.color as string}
+                                EducationalServiceName={UseOlympiadsLabelValuePair().find((OlympiadData) => 
+                                    OlympiadData.value === TutorMeeting.EducationalServiceName)?.label as string}
+                                Date={moment(TutorMeeting.Date)}
+                                IsPaid={TutorMeeting.IsPaid}
+                                ClassName="w-full md:w-[48%] mb-5"
+                            />
+                        );
+                    })
+                }
             </div>
         </>
     );

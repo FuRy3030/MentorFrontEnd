@@ -19,7 +19,7 @@ import UseScheduleMutation from "../../../api/requests/schedule/mutations/UseSch
 function ScheduleForm() {
     const QueryClient = useQueryClient();
     const ScheduleQuery = UseScheduleQuery();
-    const { mutate, isSuccess, isError } = UseScheduleMutation(() => {
+    const { mutate, isSuccess, isError, isLoading } = UseScheduleMutation(() => {
         QueryClient.invalidateQueries(["UserSchedule"]);
     });
     const CurrentDate = moment().tz('Europe/Warsaw');
@@ -59,7 +59,7 @@ function ScheduleForm() {
     return (
         <MyFormProvider<IScheduleForm> FormResolver={IScheduleFormResolver} DefaultValues={DefaultValues} 
             IsFetched={ScheduleQuery.isFetched} OnSubmit={(FormData: IScheduleForm) => mutate(FormData)} 
-            ClassName="mx-auto max-w-[750px] my-6" IsLoading={ScheduleQuery.isLoading}
+            ClassName="mx-auto max-w-[750px] my-6" IsLoading={ScheduleQuery.isLoading || isLoading}
         >
             <InnerForm />
             <SuccessErrorToastsPair 
@@ -122,9 +122,9 @@ const InnerForm = () => {
                     Label="Czas trwania zajęć"
                     Name="LessonDuration"
                     Options={[
-                        { value: "30", inputDisplay: <span>00:30</span>, dropdownDisplay: <span className="text-sm text-semi-dark-alt font-semibold">Pół godziny</span> },
+                        // { value: "30", inputDisplay: <span>00:30</span>, dropdownDisplay: <span className="text-sm text-semi-dark-alt font-semibold">Pół godziny</span> },
                         { value: "60", inputDisplay: <span>01:00</span>, dropdownDisplay: <span className="text-sm text-semi-dark-alt font-semibold">Godzina zegarowa</span> },
-                        { value: "120", inputDisplay: <span>02:00</span>, dropdownDisplay: <span className="text-sm text-semi-dark-alt font-semibold">Dwie godziny zegarowe</span> }
+                        // { value: "120", inputDisplay: <span>02:00</span>, dropdownDisplay: <span className="text-sm text-semi-dark-alt font-semibold">Dwie godziny zegarowe</span> }
                     ]}
                     OnChange={OnChangeAvaliableHours}
                     FullWidth

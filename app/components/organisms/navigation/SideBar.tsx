@@ -43,11 +43,11 @@ function SideBar(Props: { IsMobile: boolean, IsNavOpen: boolean, ToggleNavigatio
                     <SideBarLinksSection
                         Heading="Moi uczniowie"
                         Links={[
-                            {
-                                To: "/students",
-                                Text: "Uczniowie",
-                                Icon: 'icon-[ph--student]'
-                            },
+                            // {
+                            //     To: "/students",
+                            //     Text: "Uczniowie",
+                            //     Icon: 'icon-[ph--student]'
+                            // },
                             {
                                 To: "/meetings",
                                 Text: "Zajęcia",
@@ -113,11 +113,11 @@ function SideBar(Props: { IsMobile: boolean, IsNavOpen: boolean, ToggleNavigatio
                 <SideBarLinksSection
                     Heading="Moi uczniowie"
                     Links={[
-                        {
-                            To: "/students",
-                            Text: "Uczniowie",
-                            Icon: 'icon-[ph--student]'
-                        },
+                        // {
+                        //     To: "/students",
+                        //     Text: "Uczniowie",
+                        //     Icon: 'icon-[ph--student]'
+                        // },
                         {
                             To: "/meetings",
                             Text: "Zajęcia",
