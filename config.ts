@@ -18,4 +18,4 @@ const ProdConfig: Config = {
     FilesUrl: 'https://competifymentorproduction.azurewebsites.net/files'
 };
   
-export const Config = process.env.NODE_ENV === 'production' ? ProdConfig : DevConfig;
+export const Config = process.env.NODE_ENV === 'production' ? TestProdConfig : DevConfig;
