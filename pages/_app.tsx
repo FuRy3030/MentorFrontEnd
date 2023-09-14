@@ -10,6 +10,7 @@ import moment from 'moment';
 import 'moment-timezone';
 import ListItemsLayout from '../layouts/ListItemsLayout';
 import AuthorizeProvider from '../app/providers/AuthorizeProvider';
+import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 function MyApp({ Component, pageProps, router }: AppProps) {
     // moment.tz.setDefault('Europe/Warsaw');
@@ -22,20 +23,31 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
     return (
         <QueryClientProvider client={DefaultQueryClient}>
-            <AuthorizeProvider>
-                {ShouldRenderProfileLayout ? 
-                    <ProfileLayout>
+            <GoogleReCaptchaProvider
+                reCaptchaKey="6LeIniMoAAAAAJKIkrpaYkDGPZpDfUGpZnnvvk1H"
+                language="pl"
+                scriptProps={{
+                    async: false, 
+                    defer: false, 
+                    appendTo: 'head', 
+                    nonce: undefined
+                }}
+            >
+                <AuthorizeProvider>
+                    {ShouldRenderProfileLayout ? 
+                        <ProfileLayout>
+                            <Component {...pageProps} />
+                        </ProfileLayout>
+                        :
+                        ShouldRenderListLayout ?
+                        <ListItemsLayout>
+                            <Component {...pageProps} />
+                        </ListItemsLayout>
+                        :
                         <Component {...pageProps} />
-                    </ProfileLayout>
-                    :
-                    ShouldRenderListLayout ?
-                    <ListItemsLayout>
-                        <Component {...pageProps} />
-                    </ListItemsLayout>
-                    :
-                    <Component {...pageProps} />
-                }
-            </AuthorizeProvider>
+                    }
+                </AuthorizeProvider>
+            </GoogleReCaptchaProvider>
         </QueryClientProvider>
     );
 }
