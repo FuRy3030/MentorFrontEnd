@@ -86,6 +86,11 @@ export default function UseOlympiadsLabelValuePair() {
             label: 'Olimpiada Języka Francuskiego',
             value: 'OJFR',
             color: '#002a7e'
-        }
+        },
+        {
+            label: 'Olimpiada Statystyczna',
+            value: 'OSTAT',
+            color: '#66b68e'
+        },
     ] as EuiComboBoxOptionOption<string>[];
 };

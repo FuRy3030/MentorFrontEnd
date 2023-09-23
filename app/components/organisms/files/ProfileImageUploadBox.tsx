@@ -43,11 +43,11 @@ function ProfileImageUploadBox() {
                     />
                     <MyFilePicker
                         AllowedFileTypes={["image/jpeg", "image/png"]}
-                        MaxSize={30 * 1024}
+                        MaxSize={1024 * 1024}
                         Name="ProfileImage"
                         PromptText="Wybierz zdjęcie"
                         ClassName="w-full md:w-[60%]"
-                        HelpText="Twoje zdjęcie profilowe nie może być większe niż 30KB. Jego format to JPEG lub PNG."
+                        HelpText="Twoje zdjęcie profilowe nie może być większe niż 1 MB. Jego format to JPEG lub PNG."
                         IsLoading={isLoading || FilesQuery.isLoading}
                         Large
                         FullWidth

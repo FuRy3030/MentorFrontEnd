@@ -21,6 +21,7 @@ function ScheduleForm() {
     const ScheduleQuery = UseScheduleQuery();
     const { mutate, isSuccess, isError, isLoading } = UseScheduleMutation(() => {
         QueryClient.invalidateQueries(["UserSchedule"]);
+        QueryClient.invalidateQueries(["Me"]);
     });
     const CurrentDate = moment().tz('Europe/Warsaw');
     let DefaultValues = {};

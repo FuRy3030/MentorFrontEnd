@@ -15,7 +15,7 @@ export default interface IProfileForm {
     FullLocation: string;
     Education?: 'STUDENT' | 'BACHELOR' | 'MASTERS' | 'PHD';
     Olympiads: {
-        Name: "OWE" | "OP" | "OM" | "OI" | "OFIZ" | "OLCHEM" | "OBIOL" | "OHIS" | "OGEO" | "OLIJP" | "LOSY" | "OFIL" | "OWOPISW" | "OASTRO" | "OJA" | "OJN" | "OJFR";
+        Name: "OWE" | "OP" | "OM" | "OI" | "OFIZ" | "OLCHEM" | "OBIOL" | "OHIS" | "OGEO" | "OLIJP" | "LOSY" | "OFIL" | "OWOPISW" | "OASTRO" | "OJA" | "OJN" | "OJFR" | "OSTAT";
         Experience: 'FINALIST' | 'LAUREATE' | 'INTERNATIONAL' | 'WINNER';
     } [];
     IsRemote: boolean;
@@ -42,7 +42,7 @@ export const IProfileFormZodObject = z.object({
     }, { required_error: "Pole jest wymagane" }),
     Olympiads: z.array(
         z.object({
-            Name: z.union([z.literal("OWE"), z.literal("OP"), z.literal("OM"), z.literal("OI"), z.literal("OFIZ"), z.literal("OLCHEM"), z.literal("OBIOL"), z.literal("OHIS"), z.literal("OGEO"), z.literal("OLIJP"), z.literal("LOSY"), z.literal("OFIL"), z.literal("OWOPISW"), z.literal("OASTRO"), z.literal("OJA"), z.literal("OJN"), z.literal("OJFR")], { required_error: "Pole jest wymagane" }),
+            Name: z.union([z.literal("OWE"), z.literal("OP"), z.literal("OM"), z.literal("OI"), z.literal("OFIZ"), z.literal("OLCHEM"), z.literal("OBIOL"), z.literal("OHIS"), z.literal("OGEO"), z.literal("OLIJP"), z.literal("LOSY"), z.literal("OFIL"), z.literal("OWOPISW"), z.literal("OASTRO"), z.literal("OJA"), z.literal("OJN"), z.literal("OJFR"), z.literal("OSTAT")], { required_error: "Pole jest wymagane" }),
             Experience: z.enum(["FINALIST", "LAUREATE", "INTERNATIONAL", "WINNER"], { required_error: "Pole jest wymagane", invalid_type_error: "Pole jest wymagane" }),
         }), 
         { required_error: "Musisz wybrać przynajmniej jedną olimpiadę" })

@@ -4,4 +4,7 @@ export default interface IMe {
     IsVerified: boolean;
     StripeAccountId: string;
     IsStripeVerified: boolean;
+    IsProfileConfigured: boolean;
+    IsScheduleConfigured: boolean;
+    IsPricingConfigured: boolean;
 };

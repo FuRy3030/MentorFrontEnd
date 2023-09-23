@@ -40,6 +40,9 @@ function NavigationBar(Props: { IsMobile: boolean, ToggleNavigation: (IsOpne: bo
                 <NavigationBarWarnings 
                     VerificationWarning={!data?.IsVerified} 
                     PaymentsWarning={!data?.IsStripeVerified} 
+                    ProfileWarning={!data?.IsProfileConfigured}
+                    ScheduleWarning={!data?.IsScheduleConfigured}
+                    PricingWarning={!data?.IsPricingConfigured}
                 />
             </>
         );
@@ -66,7 +69,10 @@ function NavigationBar(Props: { IsMobile: boolean, ToggleNavigation: (IsOpne: bo
                 </div>
                 <NavigationBarWarnings 
                     VerificationWarning={!data?.IsVerified} 
-                    PaymentsWarning={!data?.IsStripeVerified} 
+                    PaymentsWarning={!data?.IsStripeVerified}
+                    ProfileWarning={!data?.IsProfileConfigured}
+                    ScheduleWarning={!data?.IsScheduleConfigured}
+                    PricingWarning={!data?.IsPricingConfigured}
                 />
             </>
         );

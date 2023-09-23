@@ -21,6 +21,7 @@ function ProfileForm() {
     const ProfileQuery = UseProfileQuery();
     const { mutate, isSuccess, isError, isLoading } = UseProfileMutation(() => {
         QueryClient.invalidateQueries(["UserProfile"]);
+        QueryClient.invalidateQueries(["Me"]);
     });
     let DefaultValues = {};
 

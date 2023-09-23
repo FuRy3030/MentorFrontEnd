@@ -12,6 +12,9 @@ const GET_ME_DATA = gql`
             isVerified
             stripeAccountId
             isStripeVerified
+            isProfileConfigured
+            isScheduleConfigured
+            isPricingConfigured
         }
     }
 `;

@@ -16,6 +16,7 @@ export default function UseOlympiadsLogos() {
         OASTRO: '/olympiads/OAstro.png',
         OJA: '/olympiads/OJA.png',
         OJN: '/olympiads/OJN.bmp',
-        OJFR: '/olympiads/OJF.png'
+        OJFR: '/olympiads/OJF.png',
+        OSTAT: '/olympiads/OSTAT.png'
     };
 };

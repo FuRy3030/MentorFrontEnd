@@ -18,6 +18,7 @@ function PricingForm() {
     const ProfileQuery = UseProfileQuery();
     const { mutate, isSuccess, isError, isLoading } = UsePricingMutation(() => {
         QueryClient.invalidateQueries(["UserPricingModules"]);
+        QueryClient.invalidateQueries(["Me"]);
     });
 
     let DefaultValues: IPricingForm [] | undefined = ProfileQuery.data?.Olympiads.map((Olympiad, Index) => {
