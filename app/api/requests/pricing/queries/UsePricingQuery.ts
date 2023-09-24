@@ -10,6 +10,7 @@ const GET_USER_PRICING_QUERY = gql`
             id
             tutorId
             name
+            basePriceNoFee
             basePrice
             doublePackagePrice
             triplePackagePrice

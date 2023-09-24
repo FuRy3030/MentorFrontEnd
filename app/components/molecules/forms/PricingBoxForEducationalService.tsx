@@ -10,7 +10,7 @@ interface PricingBoxForEducationalServiceProps {
 }
 
 function PricingBoxForEducationalService(Props: PricingBoxForEducationalServiceProps) {
-    const { watch } = useFormContext();
+    const { setValue, watch } = useFormContext();
 
     return (
         <div className="my-10 p-6 shadow-soft-jjt rounded-lg bg-white w-full">
@@ -30,7 +30,8 @@ function PricingBoxForEducationalService(Props: PricingBoxForEducationalServiceP
             </div>
             <MyNumberField
                 Label="Cena za pojedyńcze zajęcia z uczniem" 
-                Name={`${Props.OrderIdentifier}.BasePrice`}
+                Name={`${Props.OrderIdentifier}.BasePriceNoFee`}
+                OnChangeWithVal={(Value: number) => setValue(`${Props.OrderIdentifier}.BasePrice`, Value * 1.4)}
                 Placeholder="Wpisz swoją cenę, którą chcesz zaproponować uczniom"
                 HelpText="Wprowadzona cena stanowi podstawę do wyliczenia wartości pozostałych pakietów dla tej olimpiady. Sprzedaż pakietów wiąże się z obniżką ceny dla ucznia"
                 Icon="payment"
@@ -48,7 +49,7 @@ function PricingBoxForEducationalService(Props: PricingBoxForEducationalServiceP
             <div className="flex flex-row flex-wrap justify-between">
                 <PriceInfo
                     ServiceName="Zajęcia z uczniem"
-                    Price={watch(`${Props.OrderIdentifier}.BasePrice`)}
+                    Price={watch(`${Props.OrderIdentifier}.BasePriceNoFee`)}
                     Currency="PLN"
                     ClassName="w-full md:w-[47.5%]"
                 />
@@ -60,8 +61,8 @@ function PricingBoxForEducationalService(Props: PricingBoxForEducationalServiceP
                 />
                 <PriceInfo
                     ServiceName="Pakiet podwójny"
-                    Price={Number((watch(`${Props.OrderIdentifier}.BasePrice`) * 1.96).toFixed(2))}
-                    OldPrice={Number((watch(`${Props.OrderIdentifier}.BasePrice`) * 2).toFixed(2))}
+                    Price={Number((watch(`${Props.OrderIdentifier}.BasePriceNoFee`) * 1.96).toFixed(2))}
+                    OldPrice={Number((watch(`${Props.OrderIdentifier}.BasePriceNoFee`) * 2).toFixed(2))}
                     Currency="PLN"
                     ClassName="w-full md:w-[47.5%]"
                     IsHotOffer
@@ -74,8 +75,8 @@ function PricingBoxForEducationalService(Props: PricingBoxForEducationalServiceP
                 />
                 <PriceInfo
                     ServiceName="Pakiet potrójny"
-                    Price={Number((watch(`${Props.OrderIdentifier}.BasePrice`) * 2.91).toFixed(2))}
-                    OldPrice={Number((watch(`${Props.OrderIdentifier}.BasePrice`) * 3).toFixed(2))}
+                    Price={Number((watch(`${Props.OrderIdentifier}.BasePriceNoFee`) * 2.91).toFixed(2))}
+                    OldPrice={Number((watch(`${Props.OrderIdentifier}.BasePriceNoFee`) * 3).toFixed(2))}
                     Currency="PLN"
                     ClassName="w-full md:w-[47.5%]"
                     IsHotOffer
@@ -88,8 +89,8 @@ function PricingBoxForEducationalService(Props: PricingBoxForEducationalServiceP
                 />
                 <PriceInfo
                     ServiceName="Pakiet 5"
-                    Price={Number((watch(`${Props.OrderIdentifier}.BasePrice`) * 4.75).toFixed(2))}
-                    OldPrice={Number((watch(`${Props.OrderIdentifier}.BasePrice`) * 5).toFixed(2))}
+                    Price={Number((watch(`${Props.OrderIdentifier}.BasePriceNoFee`) * 4.75).toFixed(2))}
+                    OldPrice={Number((watch(`${Props.OrderIdentifier}.BasePriceNoFee`) * 5).toFixed(2))}
                     Currency="PLN"
                     ClassName="w-full md:w-[47.5%]"
                     IsHotOffer
@@ -102,8 +103,8 @@ function PricingBoxForEducationalService(Props: PricingBoxForEducationalServiceP
                 />
                 <PriceInfo
                     ServiceName="Pakiet 10"
-                    Price={Number((watch(`${Props.OrderIdentifier}.BasePrice`) * 9).toFixed(2))}
-                    OldPrice={Number((watch(`${Props.OrderIdentifier}.BasePrice`) * 10).toFixed(2))}
+                    Price={Number((watch(`${Props.OrderIdentifier}.BasePriceNoFee`) * 9).toFixed(2))}
+                    OldPrice={Number((watch(`${Props.OrderIdentifier}.BasePriceNoFee`) * 10).toFixed(2))}
                     Currency="PLN"
                     ClassName="w-full md:w-[47.5%]"
                     IsHotOffer

@@ -8,6 +8,7 @@ interface MyNumberFieldProps {
     Label: string;
     Name: string;
     OnChange?: () => void;
+    OnChangeWithVal?: (Value: number) => void;
     HelpText?: string;
     Placeholder?: string;
     ClassName?: string;
@@ -34,6 +35,7 @@ function MyNumberField(Props: MyNumberFieldProps) {
                 onChange={(e) => {
                     setValue(Props.Name, parseInt(e.target.value));
                     Props.OnChange && Props.OnChange();
+                    Props.OnChangeWithVal && Props.OnChangeWithVal(parseInt(e.target.value));
                     trigger(Props.Name);
                 }}
                 placeholder={Props.Placeholder}
