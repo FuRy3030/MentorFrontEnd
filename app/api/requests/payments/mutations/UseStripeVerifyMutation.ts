@@ -18,9 +18,10 @@ const UseStripeVerifyMutation = ((OnSuccess?: Function) => {
         async () => {
             const Response: any = await GraphQLClient.request(STRIPE_VERIFY_MUTATION);
 
-            if (Response.UpdateAccountVerificationStatus) {
-                QueryClient.invalidateQueries(['Me']);
-            }
+            // if (Response.UpdateAccountVerificationStatus) {
+            //     QueryClient.invalidateQueries(['Me']);
+            // }
+            QueryClient.invalidateQueries(['Me']);
 
             Router.push('/pricing');
 			return;
