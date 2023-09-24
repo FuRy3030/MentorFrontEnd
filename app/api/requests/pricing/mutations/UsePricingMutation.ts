@@ -10,6 +10,7 @@ const REPLACE_PRICING_MODULES_MUTATION = gql`
             id
             tutorId
             name
+            basePriceNoFee
             basePrice
             doublePackagePrice
             triplePackagePrice
